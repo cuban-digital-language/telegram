@@ -23,7 +23,7 @@ class DateTimeEncoder(json.JSONEncoder):
         return json.JSONEncoder.default(self, o)
 
 
-# Reading Configs
+# Reading Configsx
 config = configparser.ConfigParser()
 config.read("config.ini")
 
@@ -38,6 +38,7 @@ username = config['Telegram']['username']
 
 # Create the client and connect
 client = TelegramClient(username, api_id, api_hash)
+
 
 async def main(phone):
     await client.start()
@@ -68,7 +69,8 @@ async def main(phone):
     total_count_limit = 0
 
     while True:
-        print("Current Offset ID is:", offset_id, "; Total Messages:", total_messages)
+        print("Current Offset ID is:", offset_id,
+              "; Total Messages:", total_messages)
         history = await client(GetHistoryRequest(
             peer=my_channel,
             offset_id=offset_id,
